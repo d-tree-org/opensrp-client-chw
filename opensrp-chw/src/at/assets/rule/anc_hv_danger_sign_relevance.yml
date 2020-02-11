@@ -1,0 +1,14 @@
+---
+name: step1_minor_illness_present_toaster
+description: Minor Illnesses relevance
+priority: 1
+condition: "step1_mild_pain == 'Yes' || step1_mild_fever == 'Yes' || step1_refill_medication == 'Yes' || step1_refill_commodities == 'Yes'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_date_of_illness
+description: Minor Illnesses relevance
+priority: 1
+condition: "step1_mild_pain == 'Yes' || step1_mild_fever == 'Yes' || step1_refill_medication == 'Yes' || step1_refill_commodities == 'Yes'"
+actions:
+  - "isRelevant = true"

@@ -64,28 +64,28 @@
         "options": [
           {
             "key": "chk_fever",
-            "text": "Fever",
+            "text": "High Fever and general body weakness",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_bleeding_vaginally",
-            "text": "Bleeding vaginally",
+            "text": "Severe vaginal bleeding",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "150802AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_server_headache",
-            "text": "Severe headache",
+            "text": "Headache/Dizziness",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "139081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_convulsions",
-            "text": "Convulsions",
+            "text": "Unconscious/Seizure",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -99,21 +99,21 @@
           },
           {
             "key": "chk_severe_leg_pain",
-            "text": "Severe leg pain",
+            "text": "Leg muscle cramps",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "114395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_unusual_behaviour",
-            "text": "Unusual behaviour (stress, confusion)",
+            "text": "Abnormal behaviour (stress, confusion)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "152376AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_swelling of breast",
-            "text": "Swelling of the breast and nipple",
+            "text": "Breast engorgement",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "125212AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -127,7 +127,7 @@
           },
           {
             "key": "chk_vaginal_discharge",
-            "text": "Discoloured or watery, liquid vaginal discharge with a bad smell",
+            "text": "Foul smelling vaginal discharge",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "123395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -148,10 +148,17 @@
           },
           {
             "key": "chk_urination",
-            "text": "Urinate a little or urine leakage",
+            "text": "Urinate a little or no urine",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "118982AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_none",
@@ -164,6 +171,29 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        }
+      },
+      {
+        "key": "danger_signs_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Describe the signs and symptoms of the illness",
+        "v_required": {
+          "value": "true",
+          "err": "Describe the signs and symptoms of the illness"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -196,6 +226,228 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "date_of_illness",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "date_picker",
+        "hint": "Date that the pregnant mother was first observed to be ill",
+        "label_info_text": "Date that the pregnant mother was first observed to be ill",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of illness"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_fever",
+                  "chk_bleeding_vaginally",
+                  "chk_server_headache",
+                  "chk_convulsions",
+                  "chk_difficulty_breathing",
+                  "chk_severe_leg_pain",
+                  "chk_unusual_behaviour",
+                  "chk_swelling of breast",
+                  "chk_severe_abdominal_pain",
+                  "chk_vaginal_discharge",
+                  "chk_blurred_vision",
+                  "chk_loss_conscioueness",
+                  "chk_urination"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "save_n_refer",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "165310AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "button",
+        "hint": "Save and Refer to Health Facility",
+        "btn_bg_color": "#CF0800",
+        "action": {
+          "behaviour": "refer"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_fever",
+                  "chk_bleeding_vaginally",
+                  "chk_server_headache",
+                  "chk_convulsions",
+                  "chk_difficulty_breathing",
+                  "chk_severe_leg_pain",
+                  "chk_unusual_behaviour",
+                  "chk_swelling of breast",
+                  "chk_severe_abdominal_pain",
+                  "chk_vaginal_discharge",
+                  "chk_blurred_vision",
+                  "chk_loss_conscioueness",
+                  "chk_urination"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "minor_illnesses_title",
+        "type": "label",
+        "text": "Minor Illnesses Mother",
+        "label_text_size": "18sp",
+        "label_text_style": "bold",
+        "text_color": "#000000",
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "mild_pain",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "123395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Does the mother have mild pain anywhere in the body?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "mild_fever",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "136443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Does the mother have mild fever?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "refill_commodities",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "155052AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Does the mother need a refill of other commodities such as maternity pads, antiseptics/soaps?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_mama": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "minor_illness_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mother has minor Illnesses! \nAdvice to go to the ADDO.",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_hv_minor_illness_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "save_n_link",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "165310AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "button",
+        "hint": "Save and Link to ADDO",
+        "btn_bg_color": "#45B6FE",
+        "action": {
+          "behaviour": "link"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_hv_minor_illness_relevance.yml"
+            }
           }
         }
       }

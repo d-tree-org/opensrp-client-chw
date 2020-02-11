@@ -1,0 +1,7 @@
+---
+name: step1_child_minor_illness_present_toaster
+description: Child Minor Illnesses relevance
+priority: 1
+condition: "step1_fever == 'Yes' || step1_cough_cold == 'Yes' || step1_mild_diarrhea == 'Yes' || step1_skin_infections == 'Yes' || step1_minor_wound == 'Yes'"
+actions:
+  - "isRelevant = true"

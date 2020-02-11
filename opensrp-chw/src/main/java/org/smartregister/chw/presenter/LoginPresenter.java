@@ -81,6 +81,6 @@ public class LoginPresenter extends BaseLoginPresenter implements BaseLoginContr
 
     @Override
     public boolean isServerSettingsSet() {
-        return false;
+        return true;
     }
 }

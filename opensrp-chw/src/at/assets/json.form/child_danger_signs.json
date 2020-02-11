@@ -168,6 +168,13 @@
             "openmrs_entity_id":""
           },
           {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
             "key": "chk_none",
             "text": "None",
             "value": false,
@@ -178,6 +185,29 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        }
+      },
+      {
+        "key": "illness_description_1m5yr",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Describe the signs and symptoms of the illness",
+        "v_required": {
+          "value": "true",
+          "err": "Describe the signs and symptoms of the illness"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -194,22 +224,259 @@
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_fever",
-                  "chk_excessive_crying",
-                  "chk_fast_breathing",
-                  "chk_difficult_breathing",
-                  "chk_unable_to_suck",
-                  "chk_umbilical_discharge",
-                  "chk_no_movement",
+                  "chk_extreme_cold_or_hot",
                   "chk_convulsions",
-                  "chk_skin_rashes",
-                  "chk_pale",
+                  "chk_chest_indrawing",
+                  "chk_difficult_breathing",
+                  "chk_difficult_drinking",
+                  "chk_oversleeping",
+                  "chk_redness_around_umbilical",
+                  "chk_body_rashes",
                   "chk_eye_discharge",
                   "chk_severe_abdominal_pain",
-                  "chk_lethargy"
+                  "chk_lethargy",
+                  "chk_grunting_voice",
+                  "chk_severe_vomit",
+                  "chk_not_getting_better",
+                  "chk_weak",
+                  "chk_diarrhea",
+                  "chk_sunk_eyes"
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "date_of_illness_1m5yr",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "date_picker",
+        "hint": "Date that the child was first observed to be ill",
+        "label_info_text": "Date that the child was first observed to be ill",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of illness"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_extreme_cold_or_hot",
+                  "chk_convulsions",
+                  "chk_chest_indrawing",
+                  "chk_difficult_breathing",
+                  "chk_difficult_drinking",
+                  "chk_oversleeping",
+                  "chk_redness_around_umbilical",
+                  "chk_body_rashes",
+                  "chk_eye_discharge",
+                  "chk_severe_abdominal_pain",
+                  "chk_lethargy",
+                  "chk_grunting_voice",
+                  "chk_severe_vomit",
+                  "chk_not_getting_better",
+                  "chk_weak",
+                  "chk_diarrhea",
+                  "chk_sunk_eyes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "minor_illnesses_title",
+        "type": "label",
+        "text": "Child Minor Illnesses",
+        "label_text_size": "18sp",
+        "label_text_style": "bold",
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "fever",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spinner",
+        "hint": "Does the child have fever?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "cough_cold",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spinner",
+        "hint": "Does the child have a cough or cold/flu?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "mild_diarrhea",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spinner",
+        "hint": "Does the child have mild diarrhea without blood (less than 3 times in 24 hrs)? ",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "skin_infections",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spinner",
+        "hint": "Does the child have minor skin infections?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "minor_wound",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spinner",
+        "hint": "Does the child have minor wounds or cuts?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "step1:danger_signs_present_child": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_none"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "child_minor_illness_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Child has minor Illnesses! \nRecommend that the client visits a nearby ADDO",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "child_danger_sign_relevance.yml"
+            }
           }
         }
       }
