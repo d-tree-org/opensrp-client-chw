@@ -218,10 +218,8 @@
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
         <service android:name=".intent.ChwPncCloseDateIntent" />
         <service android:name="org.smartregister.reporting.service.IndicatorGeneratorIntentService" />
-        <service android:name="org.smartregister.chw.service.SchedulesIntentService" />
-        <service android:name="org.smartregister.chw.sync.ChwSyncIntentService" />
-        <service android:name="org.smartregister.sync.intent.SettingsSyncIntentService" />
-        <service android:name=".sync.AfyatekSettingsSyncIntentService" />
+        <service android:name=".service.SchedulesIntentService" />
+        <service android:name=".sync.ChwSyncIntentService" />
 
         <uses-library
             android:name="org.apache.http.legacy"

@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "ANC Danger Signs Form",
+    "title": "ANC Registration",
     "fields": [
       {
         "key": "danger_signs_present",
@@ -168,13 +168,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "chk_other",
-            "text": "Other",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-          },
-          {
             "key": "chk_none",
             "text": "None",
             "value": false,
@@ -185,29 +178,6 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
-        }
-      },
-      {
-        "key": "danger_signs_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
-        "type": "edit_text",
-        "hint": "Describe the signs and symptoms of the illness",
-        "v_required": {
-          "value": "true",
-          "err": "Describe the signs and symptoms of the illness"
-        },
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_other"
-                ]
-              }
-            ]
-          }
         }
       },
       {
@@ -267,188 +237,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select one option"
-        }
-      },
-      {
-        "key": "minor_illnesses_title",
-        "type": "label",
-        "text": "Minor Illnesses Mother",
-        "label_text_size": "18sp",
-        "label_text_style": "bold",
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_none"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "mild_pain",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "spinner",
-        "hint": "Does the mother have mild pain anywhere in the body?",
-        "values": [
-          "Yes",
-          "No"
-        ],
-        "keys": [
-          "Yes",
-          "No"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_none"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "mild_fever",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "spinner",
-        "hint": "Does the mother have mild fever?",
-        "values": [
-          "Yes",
-          "No"
-        ],
-        "keys": [
-          "Yes",
-          "No"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_none"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "refill_medication",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "spinner",
-        "hint": "Do the mother need a refill of medicines such as Ferrous Sulphate, folic acid, and SP for IPTp?",
-        "values": [
-          "Yes",
-          "No"
-        ],
-        "keys": [
-          "Yes",
-          "No"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_none"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "refill_commodities",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "spinner",
-        "hint": "Does the mother need a refill of other commodities such as antiseptics/soaps, delivery kit?",
-        "values": [
-          "Yes",
-          "No"
-        ],
-        "keys": [
-          "Yes",
-          "No"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
-        "relevance": {
-          "step1:danger_signs_present": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_none"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "date_of_illness",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "1730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "date_picker",
-        "hint": "Date that the pregnant mother was first observed to be ill",
-        "label_info_text": "Date that the pregnant mother was first observed to be ill",
-        "expanded": false,
-        "min_date": "today-1y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the date of illness"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_hv_danger_sign_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "minor_illness_present_toaster",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Mother has minor Illnesses! \nAdvice to go to the ADDO.",
-        "text_color": "#CF0800",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_hv_danger_sign_relevance.yml"
-            }
-          }
         }
       }
     ]

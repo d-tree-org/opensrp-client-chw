@@ -107,14 +107,6 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "48AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": ""
-          },
-          {
-            "key": "mother_dead",
-            "text": "Mother dead",
-            "value": false,
-            "openmrs_entity": "",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": ""
           }
         ],
         "v_required": {
@@ -378,7 +370,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "barcode",
         "barcode_type": "qrcode",
-        "hint": "Afya-Tek ID",
+        "hint": "Boresha Afya ID",
         "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",

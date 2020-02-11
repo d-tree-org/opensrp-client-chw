@@ -1,7 +1,6 @@
 package org.smartregister.chw.interactor;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -10,7 +9,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.R;
-import org.smartregister.chw.actionhelper.DangerSignsAction;
 import org.smartregister.chw.actionhelper.HealthFacilityVisitAction;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.contract.BaseAncHomeVisitContract;
@@ -77,12 +75,13 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
         dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
 
         evaluateDangerSigns(actionList, details, context);
+        evaluateMinorIllnesses(actionList, details, context);
         evaluateHealthFacilityVisit(actionList, details, memberObject, dateMap, context);
-//        evaluateFamilyPlanning(actionList, details, context);
-//        evaluateNutritionStatus(actionList, details, context);
+        evaluateFamilyPlanning(actionList, details, context);
+        evaluateNutritionStatus(actionList, details, context);
         evaluateCounsellingStatus(actionList, details, context);
         evaluateMalaria(actionList, details, context);
-//        evaluateObservation(actionList, details, context);
+        //evaluateObservation(actionList, details, context);
         evaluateRemarks(actionList, details, context);
 
         return actionList;
@@ -91,13 +90,25 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
     private void evaluateDangerSigns(LinkedHashMap<String, BaseAncHomeVisitAction> actionList,
                                      Map<String, List<VisitDetail>> details,
                                      final Context context) throws BaseAncHomeVisitAction.ValidationException {
-        BaseAncHomeVisitAction danger_signs = new BaseAncHomeVisitAction.Builder(context, "Danger signs and management of minor illnesses")
+        BaseAncHomeVisitAction danger_signs = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_danger_signs))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getDangerSigns())
                 .withHelper(new DangerSignsAction())
                 .build();
         actionList.put(context.getString(R.string.anc_home_visit_danger_signs), danger_signs);
+    }
+
+    private void evaluateMinorIllnesses(LinkedHashMap<String, BaseAncHomeVisitAction> actionList,
+                                     Map<String, List<VisitDetail>> details,
+                                     final Context context) throws BaseAncHomeVisitAction.ValidationException {
+        BaseAncHomeVisitAction danger_signs = new BaseAncHomeVisitAction.Builder(context, "Minor Illnesses")
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Utils.getLocalForm("anc_hv_minor_illnesses", CoreConstants.JSON_FORM.locale, CoreConstants.JSON_FORM.assetManager))
+                .withHelper(new MinorIllnessesAction())
+                .build();
+        actionList.put("Minor Illnesses", danger_signs);
     }
 
     private void evaluateHealthFacilityVisit(LinkedHashMap<String, BaseAncHomeVisitAction> actionList,
@@ -136,7 +147,6 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getNutritionStatus())
                 .withHelper(new NutritionAction())
-                .withDisabledMessage("")
                 .build();
         actionList.put(context.getString(R.string.anc_home_visit_nutrition_status), nutrition_ba);
     }
@@ -189,10 +199,9 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
         actionList.put(context.getString(R.string.anc_home_visit_remarks_and_comments), remark_ba);
     }
 
-    private class DangerSignsAction extends org.smartregister.chw.actionhelper.DangerSignsAction {
+    private class DangerSignsAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
         private String danger_signs_counseling;
         private String danger_signs_present;
-        private String minor_illnesses_present;
         private Context context;
 
         @Override
@@ -211,7 +220,6 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                 JSONObject jsonObject = new JSONObject(jsonPayload);
                 danger_signs_counseling = JsonFormUtils.getValue(jsonObject, "danger_signs_counseling");
                 danger_signs_present = JsonFormUtils.getCheckBoxValue(jsonObject, "danger_signs_present");
-                minor_illnesses_present = JsonFormUtils.getValue(jsonObject, "mild_pain");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -236,8 +244,6 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
         public String evaluateSubTitle() {
             return MessageFormat.format("Danger signs: {0}", danger_signs_present) +
                     "\n" +
-                    MessageFormat.format("Minor illnesses: {0}", !TextUtils.isEmpty(minor_illnesses_present)) +
-                    "\n" +
                     MessageFormat.format("Health facility counselling {0}",
                             (danger_signs_counseling.equalsIgnoreCase("Yes") ? context.getString(R.string.done).toLowerCase() : context.getString(R.string.not_done).toLowerCase())
                     );
@@ -255,6 +261,70 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                 return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseAncHomeVisitAction.Status.PENDING;
+            }
+        }
+
+        @Override
+        public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
+            Timber.v("onPayloadReceived");
+        }
+    }
+
+    private class MinorIllnessesAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
+        private String danger_signs_present;
+        private String date_of_illness;
+        private LocalDate illnessDate;
+        private Context context;
+
+        @Override
+        public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
+            this.context = context;
+        }
+
+        @Override
+        public String getPreProcessed() {
+            return null;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                danger_signs_present = JsonFormUtils.getCheckBoxValue(jsonObject, "danger_signs_present");
+                date_of_illness = JsonFormUtils.getValue(jsonObject, "date_of_illness");
+                illnessDate = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(date_of_illness);
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+
+        @Override
+        public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+            return null;
+        }
+
+        @Override
+        public String getPreProcessedSubTitle() {
+            return null;
+        }
+
+        @Override
+        public String postProcess(String s) {
+            return null;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            return MessageFormat.format("{0}", DateTimeFormat.forPattern("dd MMM yyyy").print(illnessDate)
+            );
+        }
+
+        @Override
+        public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(date_of_illness)) {
+                return BaseAncHomeVisitAction.Status.PENDING;
+            }else {
+                return BaseAncHomeVisitAction.Status.COMPLETED;
             }
         }
 

@@ -412,7 +412,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "type": "edit_text",
-        "hint": "Name of close person/relative who lives with her and is 18 years or older",
+        "hint": "Name of close person/relative who lives with her and is 18 years or olders",
         "edit_type": "name",
         "relevance": {
           "rules-engine": {
