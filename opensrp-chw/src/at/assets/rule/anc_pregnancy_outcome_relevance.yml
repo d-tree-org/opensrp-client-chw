@@ -10,7 +10,7 @@ actions:
 name: step1_delivery_date
 description: delivery_date relevance
 priority: 1
-condition: "step1_preg_outcome != 'miscarriage' && step1_preg_outcome != '' && step1_preg_outcome != 'mother_dead'"
+condition: "step1_preg_outcome != 'miscarriage' && step1_preg_outcome != ''"
 actions:
   - "isRelevant = true"
 
@@ -26,7 +26,7 @@ actions:
 name: step1_delivery_place
 description: delivery_place relevance
 priority: 1
-condition: "step1_preg_outcome != '' && step1_preg_outcome != 'miscarriage' && step1_preg_outcome != 'mother_dead'"
+condition: "step1_preg_outcome != '' && step1_preg_outcome != 'miscarriage'"
 actions:
   - "isRelevant = true"
 

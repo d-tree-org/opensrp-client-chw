@@ -9,9 +9,6 @@ import org.smartregister.chw.core.utils.Utils;
  * Created by samuelgithengi on 10/19/18.
  */
 public class ChwSyncConfiguration extends SyncConfiguration {
-
-    private static ChwSyncConfiguration.Flavor flavor = new ChwSyncConfigurationFlv();
-
     @Override
     public int getSyncMaxRetries() {
         return BuildConfig.MAX_SYNC_RETRIES;
@@ -59,15 +56,7 @@ public class ChwSyncConfiguration extends SyncConfiguration {
     }
 
     @Override
-    public String getSettingsSyncFilterValue() {
-        return this.flavor.getSyncFilterValueForSettings();
-    }
-
     public boolean isSyncUsingPost() {
         return !BuildConfig.DEBUG;
-    }
-
-    public interface Flavor {
-        String getSyncFilterValueForSettings();
     }
 }
