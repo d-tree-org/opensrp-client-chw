@@ -276,7 +276,10 @@
                   "chk_swelling",
                   "chk_early_labour",
                   "chk_vaginal_discharge",
-                  "chk_unusual_movement"
+                  "chk_unusual_movement",
+                  "chk_water_broke",
+                  "chk_vomiting",
+                  "chk_anemia"
                 ]
               }
             ]
