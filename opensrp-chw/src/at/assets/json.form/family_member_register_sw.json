@@ -129,30 +129,6 @@
         }
       },
       {
-        "key": "surname",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "edit_text",
-        "hint": "Jina la mwisho (Ukoo)",
-        "edit_type": "name",
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
-          "err": "Tafadhali jaza jina sahihi"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jaza jina la mwisho (Ukoo)"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_member_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "same_as_fam_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -180,6 +156,30 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "surname",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Jina la mwisho (Ukoo)",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+          "err": "Tafadhali jaza jina sahihi"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jina la mwisho (Ukoo)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_member_relevance.yml"
+            }
           }
         }
       },
@@ -274,6 +274,33 @@
         }
       },
       {
+        "key": "dob_unknown",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "birthdateApprox",
+        "type": "check_box",
+        "label": "",
+        "options": [
+          {
+            "key": "dob_unknown",
+            "text": "Tarehe ya kuzaliwa haijulikani?",
+            "text_size": "18px",
+            "value": "false"
+          }
+        ],
+        "relevance": {
+          "step1:member_consent": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_consent_yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "dob",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
@@ -311,33 +338,6 @@
             }
           }
         },
-        "relevance": {
-          "step1:member_consent": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_consent_yes"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "dob_unknown",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person",
-        "openmrs_entity_id": "birthdateApprox",
-        "type": "check_box",
-        "label": "",
-        "options": [
-          {
-            "key": "dob_unknown",
-            "text": "Tarehe ya kuzaliwa haijulikani?",
-            "text_size": "18px",
-            "value": "false"
-          }
-        ],
         "relevance": {
           "step1:member_consent": {
             "ex-checkbox": [
