@@ -93,10 +93,10 @@
         "openmrs_entity_id": "160417AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_data_type": "select one",
         "type": "spinner",
-        "hint": "Sababu ya kuiondoa",
+        "hint": "Sababu ya Kumuondoa",
         "v_required": {
           "value": "true",
-          "err": "Chagua sababu ya kuondoa rekodi ya familia"
+          "err": "Chagua sababu ya kumuondoa rekodi ya familia"
         },
         "values": [
           "Kifo",

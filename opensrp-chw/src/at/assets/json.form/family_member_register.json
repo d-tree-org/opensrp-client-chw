@@ -315,7 +315,7 @@
          "openmrs_entity": "person",
          "openmrs_entity_id": "birthdate",
          "type": "date_picker",
-         "hint": "Date of birth (DOB)",
+         "hint": "Enter date of birth (DOB)",
          "expanded": false,
          "duration": {
            "label": "Age"

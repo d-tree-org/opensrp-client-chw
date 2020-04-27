@@ -211,7 +211,7 @@
             ]
           }
         }
-      }
+      },
       {
         "key": "danger_signs_captured_sw",
         "openmrs_entity_parent": "",

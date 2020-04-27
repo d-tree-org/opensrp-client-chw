@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WAJA</string>
-    <string name="login_title">USAID Boresha Afya  \n WAJA app</string>
-    <string name="nav_logo">USAID Boresha Afya</string>
-    <string name="menu_anc">ANC</string>
-    <string name="menu_pnc">PNC</string>
+    <string name="app_name">Afya-tek</string>
+    <string name="login_title">Botnar Afya-Tek CHV App</string>
+    <string name="nav_logo">Botnar Afya-Tek</string>
+    <string name="menu_anc">Wajawazito</string>
+    <string name="menu_pnc">Waliojifungua</string>
+    <string name="pnc">Waliojifungua</string>
+    <string name="anc">Wajawazito</string>
 
     <string name="scan_fingerprint"> Scan </string>
 
     <string name="referral_followup">Tembeleo lijalo</string>
     <string name="linkage_followup">Tembeleo lijalo</string>
+    <string name="anc_danger_signs">Dalili za hatari</string>
+    <string name="danger_signs">Dalili za hatari</string>
+    <string name="anc_home_visit_danger_signs">Dalili za hatari na magonjwa madogo madogo</string>
+    <string name="pnc_home_visit_danger_signs">Dalili za hatari na magonjwa madogo madogo</string>
+
+    <string name="issued_referrals">Rufaa</string>
+
+    <string name="record_anc_visit">Rekodi tembeleo la mjamzito</string>
 
     <string name="followup">FWATILIA</string>
 

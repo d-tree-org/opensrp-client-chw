@@ -314,7 +314,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
         "type": "date_picker",
-        "hint": "Tarehe ya kuzaliwa",
+        "hint": "Ingiza tarehe ya kuzaliwa",
         "expanded": false,
         "duration": {
           "label": "Umri"
