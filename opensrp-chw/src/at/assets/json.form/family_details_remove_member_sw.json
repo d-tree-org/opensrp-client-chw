@@ -96,7 +96,7 @@
         "hint": "Sababu ya Kumuondoa",
         "v_required": {
           "value": "true",
-          "err": "Chagua sababu ya kumuondoa rekodi ya familia"
+          "err": "Chagua sababu ya kumuondoa kwenye rekodi ya familia"
         },
         "values": [
           "Kifo",
