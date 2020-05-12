@@ -9,9 +9,9 @@ actions:
         String selected = '';
         if (selectedItem.contains('chk_difficult_drinking')) {
             if (selected.isEmpty()) {
-                selected += 'Difficult Drinking/Sulking';
+                selected += 'Difficult Drinking/Suckling';
             } else {
-                selected += ', Difficult Drinking/Sulking \n';
+                selected += ', Difficult Drinking/Suckling \n';
             }
 
         }
