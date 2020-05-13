@@ -258,7 +258,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Viashiria vya hatari! \n Nimegundua viashiria vya hatari vinavyohitaji kushughulikiwa haraka: {danger_signs_captured_sw}. Unahitaji kwenda kwenye kituo cha karibu cha afya mara moja. Ni muhimu ukamilishe rufaa. Nitakufuatilia ndani ya masaa 24 ili kuona kama umefanikiwa kukamilisha rufaa yako.",
+        "text": "Viashiria vya hatari! \n Nimegundua viashiria vya hatari vinavyohitaji kushughulikiwa haraka. Unahitaji kwenda kwenye kituo cha karibu cha afya mara moja. Ni muhimu ukamilishe rufaa. Nitakufuatilia ndani ya masaa 24 ili kuona kama umefanikiwa kukamilisha rufaa yako.",
         "text_color": "#CF0800",
         "toaster_type": "problem",
         "calculation": {
