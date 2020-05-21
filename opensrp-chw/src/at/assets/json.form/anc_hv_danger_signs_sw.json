@@ -341,10 +341,29 @@
           "err": "Tafadhali jaza tarehe mama mjamzito alipoanza kujihisi kuumwa"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_hv_danger_sign_relevance.yml"
-            }
+          "step1:danger_signs_present": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "ds_fever",
+                  "ds_bleeding_vaginally",
+                  "ds_server_headache",
+                  "ds_blurred_vision",
+                  "ds_convulsions",
+                  "ds_difficulty_breathing",
+                  "ds_severe_abdominal_pain",
+                  "ds_loss_consciousness",
+                  "ds_swelling",
+                  "ds_early_labour",
+                  "ds_vaginal_discharge",
+                  "ds_unusual_movement",
+                  "ds_water_broke",
+                  "ds_vomiting",
+                  "ds_anemia",
+                  "ds_other"
+                ]
+              }
+            ]
           }
         }
       },

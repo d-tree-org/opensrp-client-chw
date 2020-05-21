@@ -104,7 +104,7 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                                              final Context context) throws BaseAncHomeVisitAction.ValidationException {
         String visit_title = MessageFormat.format(context.getString(R.string.anc_home_visit_facility_visit), memberObject.getConfirmedContacts() + 1);
         BaseAncHomeVisitAction facility_visit = new BaseAncHomeVisitAction.Builder(context, visit_title)
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(new HealhFacilityAction(memberObject, dateMap))
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getHealthFacilityVisit())
@@ -117,7 +117,7 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                                         Map<String, List<VisitDetail>> details,
                                         final Context context) throws BaseAncHomeVisitAction.ValidationException {
         BaseAncHomeVisitAction family_planning_ba = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_family_planning))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getFamilyPlanning())
                 .withHelper(new FamilyPlanningAction())
@@ -129,7 +129,7 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                                          Map<String, List<VisitDetail>> details,
                                          final Context context) throws BaseAncHomeVisitAction.ValidationException {
         BaseAncHomeVisitAction nutrition_ba = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_nutrition_status))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getNutritionStatus())
                 .withHelper(new NutritionAction())
@@ -142,7 +142,7 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                                            Map<String, List<VisitDetail>> details,
                                            final Context context) throws BaseAncHomeVisitAction.ValidationException {
         BaseAncHomeVisitAction counselling_ba = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_counselling_task))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getCOUNSELLING())
                 .withHelper(new CounsellingStatusAction())
@@ -154,7 +154,7 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                                  Map<String, List<VisitDetail>> details,
                                  final Context context) throws BaseAncHomeVisitAction.ValidationException {
         BaseAncHomeVisitAction malaria_ba = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_malaria_prevention))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.ANC_HOME_VISIT.getMALARIA())
                 .withHelper(new MalariaAction())
@@ -241,14 +241,8 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
 
         @Override
         public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(danger_signs_counseling)) {
-                return BaseAncHomeVisitAction.Status.PENDING;
-            }
-
-            if (danger_signs_counseling.equalsIgnoreCase("Yes")) {
+            if (!StringUtils.isBlank(danger_signs_present)) {
                 return BaseAncHomeVisitAction.Status.COMPLETED;
-            } else if (danger_signs_counseling.equalsIgnoreCase("No")) {
-                return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseAncHomeVisitAction.Status.PENDING;
             }
@@ -306,9 +300,9 @@ public class AncHomeVisitInteractorFlv implements AncHomeVisitInteractor.Flavor 
                 stringBuilder.append(context.getString(R.string.visit_not_done).replace("\n", ""));
             } else {
                 stringBuilder.append(MessageFormat.format("{0}: {1}\n", context.getString(R.string.date), new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(visitDate)));
-                stringBuilder.append(MessageFormat.format("{0}: {1}\n", context.getString(R.string.tests_done), tests_done));
-                stringBuilder.append(MessageFormat.format("{0}: {1}\n", context.getString(R.string.treatment_given), imm_medicine_given));
-                stringBuilder.append(MessageFormat.format("{0}: {1}", context.getString(R.string.received_llin), llin_given));
+                //stringBuilder.append(MessageFormat.format("{0}: {1}\n", context.getString(R.string.tests_done), tests_done));
+                //stringBuilder.append(MessageFormat.format("{0}: {1}\n", context.getString(R.string.treatment_given), imm_medicine_given));
+                //stringBuilder.append(MessageFormat.format("{0}: {1}", context.getString(R.string.received_llin), llin_given));
             }
             return stringBuilder.toString();
         }

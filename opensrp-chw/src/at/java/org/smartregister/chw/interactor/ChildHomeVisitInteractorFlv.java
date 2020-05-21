@@ -109,7 +109,7 @@ public class ChildHomeVisitInteractorFlv extends DefaultChildHomeVisitInteractor
         };
 
         BaseAncHomeVisitAction action = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_counselling))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.PNC_HOME_VISIT.getCOUNSELLING())
                 .withHelper(counsellingHelper)
@@ -151,7 +151,7 @@ public class ChildHomeVisitInteractorFlv extends DefaultChildHomeVisitInteractor
         };
 
         BaseAncHomeVisitAction observation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_home_visit_nutrition_status))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.CHILD_HOME_VISIT.getNutritionStatus())
                 .withHelper(nutritionStatusHelper)
@@ -280,7 +280,7 @@ public class ChildHomeVisitInteractorFlv extends DefaultChildHomeVisitInteractor
         };
 
         BaseAncHomeVisitAction action = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_malaria_prevention))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.CHILD_HOME_VISIT.getMalariaPrevention())
                 .withHelper(malariaPreventionHelper)

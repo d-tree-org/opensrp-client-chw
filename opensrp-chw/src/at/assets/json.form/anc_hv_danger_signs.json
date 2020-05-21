@@ -314,11 +314,29 @@
           "err": "Describe the other needs"
         },
         "relevance": {
-          "step1:minor_illnesses": {
+          "step1:danger_signs_present_child": {
             "ex-checkbox": [
               {
                 "or": [
-                  "mi_other_needs"
+                  "chk_extreme_cold_or_hot",
+                  "chk_convulsions",
+                  "chk_chest_indrawing",
+                  "chk_difficult_breathing",
+                  "chk_difficult_drinking",
+                  "chk_oversleeping",
+                  "chk_redness_around_umbilical",
+                  "chk_body_rashes",
+                  "chk_eye_discharge",
+                  "chk_severe_abdominal_pain",
+                  "chk_lethargy",
+                  "chk_grunting_voice",
+                  "chk_malnutrition",
+                  "chk_severe_vomit",
+                  "chk_not_getting_better",
+                  "chk_weak",
+                  "chk_diarrhea",
+                  "chk_sunk_eyes",
+                  "chk_other"
                 ]
               }
             ]
@@ -341,10 +359,29 @@
           "err": "Please enter the date of illness"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_hv_danger_sign_relevance.yml"
-            }
+          "step1:danger_signs_present": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "ds_fever",
+                  "ds_bleeding_vaginally",
+                  "ds_server_headache",
+                  "ds_blurred_vision",
+                  "ds_convulsions",
+                  "ds_difficulty_breathing",
+                  "ds_severe_abdominal_pain",
+                  "ds_loss_consciousness",
+                  "ds_swelling",
+                  "ds_early_labour",
+                  "ds_vaginal_discharge",
+                  "ds_unusual_movement",
+                  "ds_water_broke",
+                  "ds_vomiting",
+                  "ds_anemia",
+                  "ds_other"
+                ]
+              }
+            ]
           }
         }
       },
@@ -360,7 +397,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "child_danger_sign_calculation.yml"
+              "rules-file": "anc_danger_sign_calculation.yml"
             }
           }
         },
