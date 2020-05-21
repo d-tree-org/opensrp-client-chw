@@ -379,7 +379,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "child_danger_sign_calculation.yml"
+              "rules-file": "anc_hv_danger_sign_calculation.yml"
             }
           }
         },
