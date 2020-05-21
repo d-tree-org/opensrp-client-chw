@@ -314,29 +314,11 @@
           "err": "Describe the other needs"
         },
         "relevance": {
-          "step1:danger_signs_present_child": {
+          "step1:minor_illnesses": {
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_extreme_cold_or_hot",
-                  "chk_convulsions",
-                  "chk_chest_indrawing",
-                  "chk_difficult_breathing",
-                  "chk_difficult_drinking",
-                  "chk_oversleeping",
-                  "chk_redness_around_umbilical",
-                  "chk_body_rashes",
-                  "chk_eye_discharge",
-                  "chk_severe_abdominal_pain",
-                  "chk_lethargy",
-                  "chk_grunting_voice",
-                  "chk_malnutrition",
-                  "chk_severe_vomit",
-                  "chk_not_getting_better",
-                  "chk_weak",
-                  "chk_diarrhea",
-                  "chk_sunk_eyes",
-                  "chk_other"
+                  "mi_other_needs"
                 ]
               }
             ]
