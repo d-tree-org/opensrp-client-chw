@@ -323,7 +323,7 @@ public class PncHomeVisitInteractorFlv extends DefaultPncHomeVisitInteractorFlv 
         };
 
         BaseAncHomeVisitAction action = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_family_planning))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.PNC_HOME_VISIT.getFamilyPlanning())
                 .withHelper(helper)
@@ -430,7 +430,7 @@ public class PncHomeVisitInteractorFlv extends DefaultPncHomeVisitInteractorFlv 
         };
 
         BaseAncHomeVisitAction action = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_counselling))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.PNC_HOME_VISIT.getCOUNSELLING())
                 .withHelper(counsellingHelper)
@@ -718,7 +718,7 @@ public class PncHomeVisitInteractorFlv extends DefaultPncHomeVisitInteractorFlv 
                 }
 
                 BaseAncHomeVisitAction action = new BaseAncHomeVisitAction.Builder(context, title)
-                        .withOptional(false)
+                        .withOptional(true)
                         .withDetails(details)
                         .withFormName(visit_num == 1 ? Constants.JSON_FORM.PNC_HOME_VISIT.getHealthFacilityVisit() : Constants.JSON_FORM.PNC_HOME_VISIT.getHealthFacilityVisitTwo())
                         .withHelper(new PNCHealthFacilityVisitHelper(visitRule, visit_num))
