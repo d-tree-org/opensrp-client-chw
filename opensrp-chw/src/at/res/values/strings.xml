@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CHW</string>
+    <string name="app_name">CHW - Training</string>
     <string name="login_title">Botnar Afya-Tek CHV App</string>
     <string name="nav_logo">Botnar Afyatek</string>
     <string name="menu_anc">ANC</string>
