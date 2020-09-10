@@ -65,7 +65,7 @@ android {
     }
 
     buildTypes {
-        releaseTraining {
+        release {
             minifyEnabled false
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -82,30 +82,6 @@ android {
             buildConfigField "int", "BASE_PNC_CLOSE_MINUTES", '1440'
             buildConfigField "int", "SCHEDULE_SERVICE_MINUTES", '720'
             buildConfigField("String", "SIMPRINT_PROJECT_ID", ' "fUBnpzDdbsCsMp0egCHB" ')
-            buildConfigField("String", "SIMPRINT_PRODUCTION_PROJECT_ID", ' "8rlGBhsk6371eW2KLZm6" ')
-            buildConfigField("String", "SIMPRINT_USER_ID", ' "global_user" ')
-            buildConfigField("String", "SIMPRINT_OPENSRP_MODULE_ID", ' "global_module" ')
-            buildConfigField "String", 'opensrp_url', '"https://opensrp-dev.d-tree.org/opensrp/"'
-            buildConfigField "String", 'guidebooks_url', '"https://opensrp.s3.amazonaws.com/media/ba/"'
-            buildConfigField "String", 'opensrp_url_debug', '"https://opensrp-dev.d-tree.org/opensrp/"'
-        }
-        release {
-            minifyEnabled false
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "int", "OPENMRS_UNIQUE_ID_INITIAL_BATCH_SIZE", '500'
-            buildConfigField "int", "OPENMRS_UNIQUE_ID_BATCH_SIZE", '500'
-            buildConfigField "int", "OPENMRS_UNIQUE_ID_SOURCE", '3'
-            buildConfigField "boolean", "TIME_CHECK", "true"
-            buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
-            buildConfigField "int", "VACCINE_SYNC_PROCESSING_MINUTES", '30'
-            buildConfigField "int", "IMAGE_UPLOAD_MINUTES", '180'
-            buildConfigField "int", "PULL_UNIQUE_IDS_MINUTES", '180'
-            buildConfigField "int", "HOME_VISIT_MINUTES", '60'
-            buildConfigField "int", "REPORT_INDICATOR_GENERATION_MINUTES", '120'
-            buildConfigField "int", "BASE_PNC_CLOSE_MINUTES", '1440'
-            buildConfigField "int", "SCHEDULE_SERVICE_MINUTES", '720'
-            buildConfigField("String", "SIMPRINT_PROJECT_ID", ' "8rlGBhsk6371eW2KLZm6" ')
             buildConfigField("String", "SIMPRINT_PRODUCTION_PROJECT_ID", ' "8rlGBhsk6371eW2KLZm6" ')
             buildConfigField("String", "SIMPRINT_USER_ID", ' "global_user" ')
             buildConfigField("String", "SIMPRINT_OPENSRP_MODULE_ID", ' "global_module" ')
@@ -169,14 +145,14 @@ android {
     productFlavors {
         at {
             dimension = 'baseDimension'
-            applicationIdSuffix ".at"
-            versionCode 18
-            versionName "1.6.0"
-            buildConfigField "String", 'opensrp_url', '"https://afyatek.smartregister.org/opensrp/"'
+            applicationIdSuffix ".at.staging"
+            versionCode 19
+            versionName "1.7.0"
+            buildConfigField "String", 'opensrp_url', '"https://opensrp-dev.d-tree.org/opensrp/"'
             buildConfigField "String", 'guidebooks_url', '"https://opensrp.s3.amazonaws.com/media/ba/"'
             buildConfigField "String", 'opensrp_url_debug', '"https://opensrp-dev.d-tree.org/opensrp/"'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country", "Region", "District", "Ward" ,"Village", "Facility Name"}'
-            buildConfigField "int", "OPENMRS_UNIQUE_ID_SOURCE", '3'
+            buildConfigField "int", "OPENMRS_UNIQUE_ID_SOURCE", '1'
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Facility Name", "Village"}'
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS_DEBUG", '{"Facility Name", "Village"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Village"'
