@@ -53,5 +53,9 @@ Wiki [OpenSRP Documentation](https://smartregister.atlassian.net/wiki/spaces/Doc
 Email: <mailto:techteam@d-tree.org>
 Slack workspace: <opensrp.slack.com>
 
+## Other Afya-Tek Components
+-   [Health Facility](https://github.com/d-tree-org/opensrp-client-hf)
+-   [Addo](https://github.com/d-tree-org/opensrp-client-addo)
+
 ## License
 This project is licensed under the Apache 2.0 License - see the LICENSE.md file for details
