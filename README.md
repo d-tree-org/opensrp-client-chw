@@ -6,6 +6,7 @@
 
 > Afya Tek empowers and connects actors within the primary health system Community Health Workers, Drug Dispensers and health workers at primary health facilities so that they have the tools and support to deliver high quality care, and ensure that no one is left behind. Managers within the health system are also equipped with data to help them make informed, timely program, budget and policy decisions
 
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7400e38408b84d74a0c74965631021eb)](https://app.codacy.com/gh/d-tree-org/opensrp-client-chw/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 ## Getting Started
