@@ -6,7 +6,7 @@
 
 > Afya Tek empowers and connects actors within the primary health system Community Health Workers, Drug Dispensers and health workers at primary health facilities so that they have the tools and support to deliver high quality care, and ensure that no one is left behind. Managers within the health system are also equipped with data to help them make informed, timely program, budget and policy decisions
 
-[![Build Status](https://travis-ci.org/OpenSRP/opensrp-client-chw.svg?branch=master)](https://travis-ci.org/OpenSRP/opensrp-client-chw) [![Coverage Status](https://coveralls.io/repos/github/OpenSRP/opensrp-client-chw/badge.svg?branch=master)](https://coveralls.io/github/OpenSRP/opensrp-client-chw?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f68511a1ac164d58a3a48c1926c2326a)](https://www.codacy.com/app/OpenSRP/opensrp-client-chw?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OpenSRP/opensrp-client-chw&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7400e38408b84d74a0c74965631021eb)](https://app.codacy.com/gh/d-tree-org/opensrp-client-chw/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
