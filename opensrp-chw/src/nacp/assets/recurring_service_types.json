@@ -763,5 +763,431 @@
         }
       }
     ]
+  },
+  {
+    "type": "Play Assessment and Counselling",
+    "service_logic": "",
+    "service_group": "child",
+    "openmrs_service_name": {
+      "parent_entity": "",
+      "entity": "concept",
+      "entity_id": ""
+    },
+    "openmrs_date": {
+      "parent_entity": "",
+      "entity": "encounter",
+      "entity_id": "encounter_date"
+    },
+    "services": [
+      {
+        "id": "53",
+        "name": "Play Assessment and Counselling6",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+2m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+3m"
+          }
+        }
+      },
+      {
+        "id": "54",
+        "name": "Play Assessment and Counselling7",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+4m"
+          }
+        }
+      },
+      {
+        "id": "55",
+        "name": "Play Assessment and Counselling8",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+5m"
+          }
+        }
+      },
+      {
+        "id": "56",
+        "name": "Play Assessment and Counselling9",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+6m"
+          }
+        }
+      },
+      {
+        "id": "57",
+        "name": "Play Assessment and Counselling10",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+7m"
+          }
+        }
+      },
+      {
+        "id": "58",
+        "name": "Play Assessment and Counselling11",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+8m"
+          }
+        }
+      },
+      {
+        "id": "59",
+        "name": "Play Assessment and Counselling12",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+9m"
+          }
+        }
+      },
+      {
+        "id": "60",
+        "name": "Play Assessment and Counselling13",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+10m"
+          }
+        }
+      },
+      {
+        "id": "61",
+        "name": "Play Assessment and Counselling14",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+11m"
+          }
+        }
+      },
+      {
+        "id": "62",
+        "name": "Play Assessment and Counselling15",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+1y"
+          }
+        }
+      },
+      {
+        "id": "63",
+        "name": "Play Assessment and Counselling16",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+15m"
+          }
+        }
+      },
+      {
+        "id": "64",
+        "name": "Play Assessment and Counselling17",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+3m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+18m"
+          }
+        }
+      },
+      {
+        "id": "65",
+        "name": "Play Assessment and Counselling18",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+3m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+21m"
+          }
+        }
+      },
+      {
+        "id": "66",
+        "name": "Play Assessment and Counselling19",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+3m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+2y"
+          }
+        }
+      },
+      {
+        "id": "67",
+        "name": "Play Assessment and Counselling20",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+3m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+30m"
+          }
+        }
+      },
+      {
+        "id": "68",
+        "name": "Play Assessment and Counselling21",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+6m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+3y"
+          }
+        }
+      },
+      {
+        "id": "69",
+        "name": "Play Assessment and Counselling22",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+6m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+42m"
+          }
+        }
+      },
+      {
+        "id": "70",
+        "name": "Play Assessment and Counselling23",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+6m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+4y"
+          }
+        }
+      },
+      {
+        "id": "71",
+        "name": "Play Assessment and Counselling24",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+6m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+54m"
+          }
+        }
+      },
+      {
+        "id": "72",
+        "name": "Play Assessment and Counselling25",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+6m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+5y"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Complimentary feeding",
+    "service_logic": "",
+    "service_group": "child",
+    "openmrs_service_name": {
+      "parent_entity": "",
+      "entity": "concept",
+      "entity_id": "complimentary_feeding"
+    },
+    "openmrs_date": {
+      "parent_entity": "",
+      "entity": "encounter",
+      "entity_id": "encounter_date"
+    },
+    "services": [
+      {
+        "id": "73",
+        "name": "Complimentary feeding1",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+5m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+6m"
+          }
+        }
+      },
+      {
+        "id": "74",
+        "name": "Complimentary feeding2",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+7m"
+          }
+        }
+      },
+      {
+        "id": "75",
+        "name": "Complimentary feeding3",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+8m"
+          }
+        }
+      },
+      {
+        "id": "76",
+        "name": "Complimentary feeding4",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+9m"
+          }
+        }
+      },
+      {
+        "id": "77",
+        "name": "Complimentary feeding5",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+10m"
+          }
+        }
+      },
+      {
+        "id": "78",
+        "name": "Complimentary feeding6",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+11m"
+          }
+        }
+      },
+      {
+        "id": "79",
+        "name": "Complimentary feeding7",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+12m"
+          }
+        }
+      },
+      {
+        "id": "80",
+        "name": "Complimentary feeding8",
+        "schedule": {
+          "due": {
+            "reference": "dob",
+            "offset": "+1m"
+          },
+          "expiry": {
+            "reference": "dob",
+            "offset": "+13m"
+          }
+        }
+      }
+    ]
   }
 ]

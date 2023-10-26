@@ -179,6 +179,10 @@
 
     <string name="pnc_newborn_care_introduction">Essential New Born Care: Introduction ({0})</string>
     <string name="baby_premature">Baby premature/underweight</string>
+    <string name="pnc_child_play_assessment_counselling">Play Assessment and Counselling {0}</string>
+    <string name="bango_kitita_one_page">Page %s</string>
+    <string name="bango_kitita_two_pages">Page %s and Page %s</string>
+    <string name="bango_kitita_message">Please refer to the following pages in Bango Kitita to explain the activities depending on the child\'s age</string>
 
     <!---KVP/PrEP Strings -->
     <string name="kvp_prep_visit_type">Visit Type</string>

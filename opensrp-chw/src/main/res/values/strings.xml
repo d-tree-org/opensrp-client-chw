@@ -490,4 +490,6 @@
 
     <string name="malnutrition_screening_subtitle">MUAC: %s Anemia: %s</string>
     <string name="malnutrition_screening">Malnutrition/Anemia screening</string>
+
+    <string name="child_hv_complementary_feeding"> Complementary Feeding Counseling </string>
 </resources>

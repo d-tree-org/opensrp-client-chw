@@ -178,6 +178,10 @@
 
     <string name="pnc_newborn_care_introduction">Huduma muhimu ya Watoto Wachanga: Utangulizi ({0})</string>
     <string name="baby_premature">Mtoto ni njiti au ana uzito pungufu</string>
+    <string name="pnc_child_play_assessment_counselling">Tathmini maendeleo ya michezo na kufanya majadiliano {0}</string>
+    <string name="bango_kitita_one_page">Ukurasa wa %s</string>
+    <string name="bango_kitita_two_pages">Ukurasa wa %s na Ukurasa wa %s</string>
+    <string name="bango_kitita_message">Tafadhali rejea kurasa zifuatazo za Bango Kitita kueleza michezo kulingana na umri wa mtoto</string>
 
     <string name="visits_history_profile_title">Historia ya Matembeleo</string>
     <string name="view_visits_history">Angalia Historia ya Matembeleo</string>
