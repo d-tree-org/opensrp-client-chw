@@ -154,6 +154,18 @@
     <string name="penta_2">Penta 2</string>
     <string name="penta_3">Penta 3</string>
 
+    <!--    Reasons why not vaccinated-->
+    <string name="why_no_vaccine">Kwa nini mtoto hajapatiwa chanjo?</string>
+    <string name="congratulate_vaccine_uptodate">Mpongeze mama na mkumbushe kuhusu tarehe ya chanjo nyingine kama kadi inavyoonesha. Mkumbushe kuwa kuna umuhimu  mkubwa ikiwa mtoto wake atapatiwa chanjo zote kwa muda uliopangiwa</string>
+    <string-array name="reason_no_vaccine">
+        <item>not_available: Chanjo ilikuwa hamna</item>
+        <item>family_refused: Familia imekataa</item>
+        <item>clinic_closed: Kliniki ilikuwa imefungwa</item>
+        <item>return_another_day: Ameambiwa arudi siku nyingine</item>
+        <item>did_not_know: Sikuweza kumpeleka mtoto kupata chanjo</item>
+        <item>could_not_take_child: Sikujua kuhusu chanjo hio</item>
+    </string-array>
+
     <string name="vit_a_received_label">Alipokea Vitamin A</string>
     <string name="ifa_received_label">Alipokea vidonge vya IFA</string>
 

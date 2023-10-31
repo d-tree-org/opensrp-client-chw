@@ -2,20 +2,17 @@ package org.smartregister.chw.actionhelper;
 
 import android.content.Context;
 
-import com.vijay.jsonwizard.constants.JsonFormConstants;
-
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.smartregister.chw.R;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
-import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+import org.smartregister.chw.util.FnList;
+import org.smartregister.chw.util.UtilsFlv;
 import org.smartregister.dao.AbstractDao;
 import org.smartregister.domain.Alert;
 import org.smartregister.domain.AlertStatus;
@@ -30,20 +27,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
 public class ImmunizationActionHelper implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
 
     private Context context;
-    private List<VaccineWrapper> wrappers;
+    private final List<VaccineWrapper> wrappers;
     private LocalDate dueDate;
     private AlertStatus status;
 
     private List<String> keys = new ArrayList<>();
-    private Map<String, List<String>> completedVaccines = new HashMap<>();
-    private List<String> notDoneVaccines = new ArrayList<>();
-    private Map<String, VaccineRepo.Vaccine> vaccineMap = new HashMap<>();
+    private final Map<String, List<String>> completedVaccines = new HashMap<>();
+    private final List<String> notDoneVaccines = new ArrayList<>();
+    private final Map<String, VaccineRepo.Vaccine> vaccineMap = new HashMap<>();
 
     public ImmunizationActionHelper(Context context, List<VaccineWrapper> wrappers) {
         this.context = context;
@@ -89,43 +87,30 @@ public class ImmunizationActionHelper implements BaseAncHomeVisitAction.AncHomeV
         return null;
     }
 
-    @Override
     public void onPayloadReceived(String jsonPayload) {
-        try {
-            notDoneVaccines.clear();
-            completedVaccines.clear();
+        notDoneVaccines.clear();
+        completedVaccines.clear();
 
-            if(jsonPayload == null) return;
+        JSONArray jsonArray = UtilsFlv.jsonGet(jsonPayload,"step1.fields",new JSONArray());
 
-            JSONObject jsonObject = new JSONObject(jsonPayload);
+        Set<String> vaccinesKeys=new FnList<>(wrappers)
+                .map(VaccineWrapper::getName)
+                .map(NCUtils::removeSpaces)
+                .toSet();
 
-            JSONArray jsonArray = jsonObject.getJSONObject("step1").getJSONArray("fields");
-            int totalVacs = jsonArray.length();
-            int x = 0;
-            while (x < totalVacs) {
-                JSONObject fieldObject = jsonArray.getJSONObject(x);
-                String key = fieldObject.has(JsonFormConstants.KEY) ? fieldObject.getString(JsonFormConstants.KEY) : "";
-                String val = fieldObject.has(JsonFormConstants.VALUE) ? fieldObject.getString(JsonFormConstants.VALUE) : "";
-
-                if (val.equalsIgnoreCase(Constants.HOME_VISIT.VACCINE_NOT_GIVEN)) {
-                    notDoneVaccines.add(key);
-                } else {
-                    List<String> vacs = completedVaccines.get(val);
-                    if (vacs == null) {
-                        vacs = new ArrayList<>();
+        //TODO make the check used in the filter method below more effective and intuitive to serve as a general check for if the field is vaccine or not
+        FnList.range( jsonArray.length() )
+                .map( jsonArray::getJSONObject )
+                .map( UtilsFlv::getFieldKeyValuePair )
+                .filter( field -> vaccinesKeys.contains(field.key))
+                .forEachItem( field -> {
+                    if( UtilsFlv.isValidDOBDateFormat( field.value )){
+                        List<String> vacs = UtilsFlv.coalesce(completedVaccines.get(field.value),new ArrayList<>());
+                        vacs.add(field.key);
+                        completedVaccines.put(field.value, vacs);
                     }
-
-                    vacs.add(key);
-
-                    completedVaccines.put(val, vacs);
-                }
-
-                x++;
-            }
-
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
+                    else {notDoneVaccines.add(field.key);}
+                });
     }
 
     @Override
