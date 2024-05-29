@@ -34,6 +34,7 @@ import org.smartregister.immunization.domain.Vaccine;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.EventClientRepository;
 import org.smartregister.sync.helper.ECSyncHelper;
+import org.smartregister.util.AssetHandler;
 import org.smartregister.util.FormUtils;
 import org.smartregister.util.ImageUtils;
 
@@ -120,11 +121,17 @@ public class JsonFormUtils extends CoreJsonFormUtils {
                 lookUpBaseEntityId = getString(lookUpJSONObject, "value");
             }
             if (lookUpEntityId.equals("family") && StringUtils.isNotBlank(lookUpBaseEntityId)) {
+                EventClientRepository eventClientRepository = new EventClientRepository();
                 Client ss = new Client(lookUpBaseEntityId);
                 Context context = ChwApplication.getInstance().getContext().applicationContext();
-                addRelationship(context, ss, baseClient);
+
+                //Find primary_caregiver id
+                ECSyncHelper syncHelper = ChwApplication.getInstance().getEcSyncHelper();
+                JSONObject object = eventClientRepository.getClientByBaseEntityId(baseClient.getBaseEntityId());
+                Client clientDb= syncHelper.convert(object, Client.class);
+
+                addRelationship(context, clientDb, baseClient);
                 SQLiteDatabase db = ChwApplication.getInstance().getRepository().getReadableDatabase();
-                EventClientRepository eventClientRepository = new EventClientRepository();
                 JSONObject clientjson = eventClientRepository.getClient(db, lookUpBaseEntityId);
                 baseClient.setAddresses(getAddressFromClientJson(clientjson));
             }
@@ -134,6 +141,32 @@ public class JsonFormUtils extends CoreJsonFormUtils {
         } catch (Exception e) {
             Timber.e(e);
             return null;
+        }
+    }
+
+    public static void addRelationship(Context context, Client clientDb, Client child) {
+        try {
+            String relationships = AssetHandler.readFileFromAssetsFolder(FormUtils.ecClientRelationships, context);
+            JSONArray jsonArray = null;
+            List<String> motherList = clientDb.getRelationships().get("mother");
+            List<String> familyList = clientDb.getRelationships().get("family");
+            if(motherList != null && familyList != null){
+                String mother_id = motherList.get(0);
+                String family_id = familyList.get(0);
+                jsonArray = new JSONArray(relationships);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject rObject = jsonArray.getJSONObject(i);
+                    String relationType = rObject.getString("client_relationship");
+                    if (relationType.equals(org.smartregister.chw.anc.util.Constants.RELATIONSHIP.FAMILY)){
+                        child.addRelationship(relationType, family_id);
+                    } else if (relationType.equals(org.smartregister.chw.anc.util.Constants.RELATIONSHIP.MOTHER)){
+                        child.addRelationship(relationType, mother_id);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Timber.e(e);
         }
     }
 
