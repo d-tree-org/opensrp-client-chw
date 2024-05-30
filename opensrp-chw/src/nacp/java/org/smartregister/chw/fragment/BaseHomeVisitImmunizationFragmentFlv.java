@@ -152,15 +152,21 @@ public class BaseHomeVisitImmunizationFragmentFlv extends DefaultBaseHomeVisitIm
 
     protected void onSelectingNoVaccination(boolean showReasons){
         new Handler().postDelayed(() ->{
-            root.getRootView().findViewById(R.id.reasons_no_vaccines).setVisibility(showReasons?View.VISIBLE:View.GONE);
-            root.findViewById(R.id.multiple_vaccine_date_pickerview).setVisibility(showReasons?View.GONE:View.VISIBLE);
-            root.findViewById(R.id.single_vaccine_add_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
-            root.findViewById(R.id.vaccination_name_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            onSomeVaccineNotSelected(showReasons);
             if(showReasons){
                 new FnList<>(vaccineCheckboxes).forEachItem(ch-> ch.setChecked(false));
                 congratulationsView.setVisibility(View.GONE);
             }
 
+        }, 600);
+    }
+    private void onSomeVaccineNotSelected(boolean showReasons){
+        new Handler().postDelayed(() ->{
+            root.getRootView().findViewById(R.id.reasons_no_vaccines).setVisibility(showReasons?View.VISIBLE:View.GONE);
+            root.findViewById(R.id.multiple_vaccine_date_pickerview).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            root.findViewById(R.id.single_vaccine_add_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            root.findViewById(R.id.vaccination_name_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            congratulationsView.setVisibility(View.GONE);
         }, 600);
     }
 
@@ -200,6 +206,11 @@ public class BaseHomeVisitImmunizationFragmentFlv extends DefaultBaseHomeVisitIm
                 && !selectedVaccine.isEmpty();
 //        boolean isMultiDateMode = datesContainer.getVisibility() == View.VISIBLE;
         new Handler().postDelayed(() ->congratulationsView.setVisibility(allSelected?View.VISIBLE:View.GONE) , 600);
+        boolean someNotSelected = vaccinesContainer.getChildCount() > selectedVaccine.size() ;
+        if(someNotSelected){
+
+        }
+        onSomeVaccineNotSelected(true);
     }
 
     protected FnList<String> getSelectedReasonsNoVaccines() {
