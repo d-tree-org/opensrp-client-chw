@@ -153,10 +153,14 @@ public class BaseHomeVisitImmunizationFragmentFlv extends DefaultBaseHomeVisitIm
     protected void onSelectingNoVaccination(boolean showReasons){
         new Handler().postDelayed(() ->{
             onSomeVaccineNotSelected(showReasons);
+            root.findViewById(R.id.multiple_vaccine_date_pickerview).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            root.findViewById(R.id.single_vaccine_add_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
+            root.findViewById(R.id.vaccination_name_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
             if(showReasons){
                 new FnList<>(vaccineCheckboxes).forEachItem(ch-> ch.setChecked(false));
                 congratulationsView.setVisibility(View.GONE);
             }
+
 
         }, 600);
     }
@@ -164,9 +168,6 @@ public class BaseHomeVisitImmunizationFragmentFlv extends DefaultBaseHomeVisitIm
         new Handler().postDelayed(() ->{
             root.getRootView().findViewById(R.id.reasons_no_vaccines).setVisibility(showReasons?View.VISIBLE:View.GONE);
             root.findViewById(R.id.multiple_vaccine_date_pickerview).setVisibility(showReasons?View.GONE:View.VISIBLE);
-            root.findViewById(R.id.single_vaccine_add_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
-            root.findViewById(R.id.vaccination_name_layout).setVisibility(showReasons?View.GONE:View.VISIBLE);
-            congratulationsView.setVisibility(View.GONE);
         }, 600);
     }
 
@@ -202,17 +203,20 @@ public class BaseHomeVisitImmunizationFragmentFlv extends DefaultBaseHomeVisitIm
                     return m;
                 });
 
-        boolean allSelected = vaccinesContainer.getChildCount() == selectedVaccine.size()
-                && !selectedVaccine.isEmpty();
-//        boolean isMultiDateMode = datesContainer.getVisibility() == View.VISIBLE;
+        boolean allSelected = vaccinesContainer.getChildCount() == selectedVaccine.size() && !selectedVaccine.isEmpty();
         new Handler().postDelayed(() ->congratulationsView.setVisibility(allSelected?View.VISIBLE:View.GONE) , 600);
-        boolean someNotSelected = vaccinesContainer.getChildCount() > selectedVaccine.size() ;
-        if(someNotSelected){
-
-        }
-        onSomeVaccineNotSelected(true);
+        onSomeVaccineNotSelected(!allSelected);
+        if(allSelected) uncheckReasonCheckbox();
     }
 
+    protected void uncheckReasonCheckbox() {
+        LinearLayout layout = root.getRootView().findViewById(R.id.reasons_no_vaccines);
+        FnList.generate(layout::getChildAt)
+                .forEachItem(v->{
+                    CheckBox ch=v.findViewById(R.id.select);
+                    ch.setChecked(false);
+                });
+    }
     protected FnList<String> getSelectedReasonsNoVaccines() {
         LinearLayout layout = root.getRootView().findViewById(R.id.reasons_no_vaccines);
         return FnList.generate(layout::getChildAt)

@@ -345,6 +345,7 @@ dependencies {
         exclude group: 'androidx.constraintlayout', module: 'constraintlayout'
         exclude group: 'com.google.guava', module: 'guava'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
+        exclude group: 'com.ibm.fhir', module: 'fhir-path'
     }
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:5.1.0'
     implementation('io.ona.kujaku:library:0.9.0') {
@@ -353,6 +354,7 @@ dependencies {
     }
 
     //Do not upgrade to 1.1.0 due to compatibility issues
+    implementation 'com.ibm.fhir:fhir-path:4.7.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
