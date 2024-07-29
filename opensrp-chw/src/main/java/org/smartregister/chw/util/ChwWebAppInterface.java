@@ -64,6 +64,15 @@ public class ChwWebAppInterface {
                     return "";
             }
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.ECD_REPORT)){
+            switch (key) {
+                case Constants.ReportConstants.ECDReportKeys.CLIENTS_MONTHLY_REPORT:
+                    ReportUtils.setPrintJobName("ECD_clients_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.ECDReport.computeReport(ReportUtils.getReportDate());
+                default:
+                    return "";
+            }
+        }
         return "";
     }
 

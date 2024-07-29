@@ -1,0 +1,80 @@
+indicators:
+  - key: "ecd-1-number-of-households-enrolled"
+    description: "Idadi ya kaya zilizosajiliwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='Family Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-2-number-of-clients-enrolled-anc"
+    description: "Idadi ya wateja wajawazito waliosajiliwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='ANC Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-2-number-of-clients-enrolled-pnc"
+    description: "Idadi ya wateja waliojifungua waliosajiliwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='PNC Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-2-number-of-clients-enrolled-child-under-5"
+    description: "Idadi ya wateja watoto walio sajiliwa walio chini ya miaka mitano(5)"
+    indicatorQuery: "SELECT count (*) FROM event WHERE (eventType='PNC Child Registration' or eventType='Child Registration') AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-anc"
+    description: "Idadi ya wateja wajawazito wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-pnc"
+    description: "Idadi ya wateja walio jifungua wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_pregnancy_outcome ON ec_pregnancy_outcome.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+
+  - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-child-under-5"
+    description: "Idadi ya wateja watoto walio chini ya miaka mitano(5) wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-4-number-of-completed-referrals-anc"
+    description: "Idadi ya rufaa zilizokamilika kituoni kwa wajawazito"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-4-number-of-completed-referrals-pnc"
+    description: "Idadi ya rufaa zilizokamilika kituoni kwa walio jifungua"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-4-number-of-completed-referrals-child-under-5"
+    description: "Idadi ya rufaa zilizokamilika kituoni kwa watoto wenye Umri chini ya Miaka Mitano"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-5-number-of-caregiver-received-ecd-ME-years-10-24"
+    description: "Idadi ya wazazi/walezi wa Kiume wenye miaka 10 hadi 24  waliopata huduma za MMMAM mwezi huu."
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-5-number-of-caregiver-received-ecd-ME-years-over-24"
+    description: "Idadi ya wazazi/walezi wa Kiume wenye miaka zaidi ya 24  waliopata huduma za MMMAM mwezi huu."
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-5-number-of-caregiver-received-ecd-KE-years-over-24"
+    description: "Idadi ya wazazi/walezi wa Kike wenye miaka zaidi ya 24  waliopata huduma za MMMAM mwezi huu."
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-5-number-of-caregiver-received-ecd-kE-years-10-24"
+    description: "Idadi ya wazazi/walezi wa Kike wenye miaka 10 hadi 24  waliopata huduma za MMMAM mwezi huu."
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-10-25-years"
+    description: "Idadi ya watoto wa miaka 0-3 waliopata huduma za MMMAM mwezi huu wenye walezi au wazazi wenye umri kati ya miaka 10 hadi 25"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-over-25-years"
+    description: "Idadi ya watoto wa miaka 0-3 waliopata huduma za MMMAM mwezi huu wenye walezi au wazazi wenye umri zaidi ya miaka 25"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-7-number-of-caregiver-created-play-material-with-age-10-25-years"
+    description: "Idadi ya wazazi/walezi wenye umri kati ya miak 10 hadi 25 waliotengeneza vifaa vya michezo kulingana na umri wa mtoto"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-7-number-of-caregiver-created-play-material-with-over-25-years"
+    description: "Idadi ya wazazi/walezi wenye umri zaidi ya miaka 25 waliotengeneza vifaa vya michezo kulingana na umri wa mtoto"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-age-10-25-years"
+    description: "Idadi ya wazazi/walezi wenye umri kati ya miaka 10 hadi 25 waliotengeneza au kununua vitabu kulingana na umri wa mtoto"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+
+  - key: "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-over-25-years"
+    description: "Idadi ya wazazi/walezi wenye umri kati ya miaka 10 hadi 25 waliotengeneza au kununua vitabu kulingana na umri wa mtoto"
+    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"

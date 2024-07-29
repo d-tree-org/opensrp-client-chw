@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAARIFA YA MWEZI YA WATOA HUDUMA NGAZI YA JAMII KWA HUDUMA ZA MALEZI,MAKUZI NA MAENDELEO
+        YA AWALI YA MTOTO (MMMAM)</title>
+    <style>
+        body {
+            padding: 5px;
+            font-size: 0.25rem;
+        }
+
+        body,
+        td,
+        th {
+            font-family: "Times New Roman", serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            width: 7%;
+            padding: 5px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        thead th {
+            text-align: center;
+        }
+
+        .heading h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        .no-data {
+            background: #ccc;
+        }
+
+        .table-title {
+            width: 30%;
+            background-color: #ccc;
+            font-weight: 500;
+        }
+
+        .underline {
+            border-bottom: 1px solid #000;
+        }
+
+        .show-on-print {
+            display: none;
+        }
+
+        @media print {
+            .show-on-print {
+                display: block;
+            }
+            body {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+
+<body onload="onLoad()">
+<div>
+    <h3 style="text-align: center">FOMU YA TAARIFA YA MWEZI YA WATOA HUDUMA NGAZI YA JAMII KWA
+        HUDUMA ZA MALEZI,MAKUZI NA
+        MAENDELEO YA AWALI YA MTOTO (MMMAM)</h3>
+    <h3>TAARIFA YA [MWEZI/MWAKA]: <span id="report_period"></span></h3>
+    <h3>MKOA: <span id="region_name"></span></h3>
+    <h3>HALIMASHAURI: <span id="council_name"></span></h3>
+    <h3>KITUO: <span id="reporting_facility"></span></h3>
+</div>
+<table border="1">
+    <thead></thead>
+    <tbody>
+    <tr>
+        <td></td>
+        <td colspan="14">HUDUMA ZA MALEZI,MAKUZI NA MAENDELEO YA AWALI YA MTOTO ZILIZOTOLEWA NA
+            WATOA HUDUMA ZA AFYA NGAZI YA JAMII (WAJA)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="14">JEDWALI I: WAZAZI/WALEZI</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="6">Kiashiria</td>
+        <td>Jumla</td>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td colspan="6">Idadi ya kaya zilizosajiliwa mwezi huu</td>
+        <td id="ecd-1-number-of-households-enrolled"></td>
+
+    </tr>
+
+    <tr>
+        <th rowspan="2">2</th>
+
+        <td colspan="6" rowspan="2">Idadi ya wateja waliosajiliwa mwezi huu</td>
+        <td>Jumla Kuu</td>
+        <td>Wajawazito</td>
+        <td>Baada ya kujifungua</td>
+        <td>Watoto chini ya miaka 5</td>
+    </tr>
+    <tr>
+        <td id="ecd-2-number-of-clients-enrolled-total"></td>
+        <td id="ecd-2-number-of-clients-enrolled-anc"></td>
+        <td id="ecd-2-number-of-clients-enrolled-pnc"></td>
+        <td id="ecd-2-number-of-clients-enrolled-child-under-5"></td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td colspan="6">Idadi ya wateja wenye dalili za hatari waliopewa rufaa kwa mwezi huu</td>
+        <td id="ecd-3-number-of-client-with-danger-sign-and-referral-issued-total"></td>
+        <td id="ecd-3-number-of-client-with-danger-sign-and-referral-issued-anc"></td>
+        <td id="ecd-3-number-of-client-with-danger-sign-and-referral-issued-pnc"></td>
+        <td id="ecd-3-number-of-client-with-danger-sign-and-referral-issued-child-under-5"></td>
+    </tr>
+    <tr>
+        <th>4</th>
+        <td colspan="6">Idadi ya rufaa zilizokamilika kituoni</td>
+        <td id="ecd-4-number-of-completed-referrals-total"></td>
+        <td id="ecd-4-number-of-completed-referrals-anc"></td>
+        <td id="ecd-4-number-of-completed-referrals-pnc"></td>
+        <td id="ecd-4-number-of-completed-referrals-child-under-5"></td>
+    </tr>
+    <tr>
+        <td colspan="14">JEDWALI 2: WAZAZI/WALEZI</td>
+    </tr>
+    <tr>
+        <td colspan="7" rowspan="2">Viashiria</td>
+        <td rowspan="2">Jumla Kuu (ME + KE )</td>
+        <td colspan="2">ME</td>
+        <td rowspan="2">Jumla (ME)</td>
+        <td colspan="2">KE</td>
+        <td rowspan="2">Jumla (KE)</td>
+    </tr>
+    <tr>
+        <td>Miaka 10-24</td>
+        <td>Zaidi ya miaka 24</td>
+        <td>Miaka 10-24</td>
+        <td>Zaidi ya miaka 24</td>
+    </tr>
+    <tr>
+        <th>5</th>
+        <td colspan="6">Idadi ya wazazi/walezi waliopata huduma za MMMAM mwezi huu.</td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-total_ME_KE"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-ME-years-10-24"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-ME-years-over-24"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-ME-total"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-kE-years-10-24"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-KE-years-over-24"></td>
+        <td id="ecd-5-number-of-caregiver-received-ecd-KE-total"></td>
+    </tr>
+    <tr style="height: 1px"></tr>
+    <tr>
+        <td colspan="14">JEDWALI 3: WATOTO</td>
+    </tr>
+    <tr>
+        <td colspan="7" rowspan="2">Viashiria</td>
+        <td rowspan="2">Jumla</td>
+        <td colspan="2">Umri wa Wazazi / Walezi</td>
+    </tr>
+    <tr>
+        <td>Miaka 10-25</td>
+        <td>Zaidi ya miaka 25</td>
+    </tr>
+    <tr>
+        <th>6</th>
+        <td colspan="6">Idadi ya watoto wa miaka 0-3 waliopata huduma za MMMAM mwezi huu</td>
+        <td id="ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-total"></td>
+        <td id="ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-10-25-years"></td>
+        <td id="ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-over-25-years"></td>
+    </tr>
+    <tr>
+        <th>7</th>
+        <td colspan="6">Idadi ya wazazi/walezi waliotengeneza vifaa vya michezo kulingana na umri
+            wa mtoto
+        </td>
+        <td id="ecd-7-number-of-caregiver-created-play-material-total"></td>
+        <td id="ecd-7-number-of-caregiver-created-play-material-with-age-10-25-years"></td>
+        <td id="ecd-7-number-of-caregiver-created-play-material-with-over-25-years"></td>
+    </tr>
+    <tr>
+        <th>8</th>
+        <td colspan="6">Idadi ya wazazi/walezi waliotengeneza au kununua vitabu kulingana na umri
+            wa mtoto
+        </td>
+        <td id="ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-total"></td>
+        <td id="ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-age-10-25-years"></td>
+        <td id="ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-over-25-years"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script type="text/javascript">
+    function onLoad() {
+<!--        const facilityNameElement = document.getElementById("reporting_facility");-->
+<!--        facilityNameElement.innerHTML = Android.getReportingFacility();-->
+        const dateElement = document.getElementById("report_period");
+        const facilityElement = document.getElementById("reporting_facility");
+        dateElement.innerHTML = Android.getDataPeriod();
+        facilityElement.innerHTML = Android.getReportingFacility();
+        const data = JSON.parse(Android.getData("ecd-clients-monthly-report"));
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            let elementKey = key
+            const element = document.getElementById(elementKey)
+            if (element !== null && element !== undefined) {
+                element.innerHTML = data.nameValuePairs[key]
+            }
+        })
+    }
+
+
+</script>
+
+</html>
