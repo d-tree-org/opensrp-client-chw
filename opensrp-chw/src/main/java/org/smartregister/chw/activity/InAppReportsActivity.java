@@ -75,7 +75,6 @@ public class InAppReportsActivity extends SecuredActivity implements View.OnClic
             condomDistributionReports.setVisibility(View.VISIBLE);
         }
 
-        // TODO: 24/07/2024 Re-visit the Implementation to check why other report has check for Visibility
         ecdReports.setVisibility(View.VISIBLE);
 
         motherChampionReportsLayout.setOnClickListener(this);
