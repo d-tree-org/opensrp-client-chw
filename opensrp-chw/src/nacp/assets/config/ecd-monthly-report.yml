@@ -1,27 +1,33 @@
 indicators:
   - key: "ecd-1-number-of-households-enrolled"
     description: "Idadi ya kaya zilizosajiliwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='Family Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
-
+    indicatorQuery: "SELECT count (*) FROM event 
+      inner join ec_family on ec_family.base_entity_id = event.baseEntityId
+      WHERE eventType='Family Registration'
+      AND ec_family.entity_type = 'ec_family' 
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
+    
   - key: "ecd-2-number-of-clients-enrolled-anc"
     description: "Idadi ya wateja wajawazito waliosajiliwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='ANC Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='ANC Registration' 
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-2-number-of-clients-enrolled-pnc"
     description: "Idadi ya wateja waliojifungua waliosajiliwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='PNC Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+    indicatorQuery: "SELECT count (*) FROM event WHERE eventType='PNC Registration' 
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-2-number-of-clients-enrolled-child-under-5"
     description: "Idadi ya wateja watoto walio sajiliwa walio chini ya miaka mitano(5)"
-    indicatorQuery: "SELECT count (*) FROM event WHERE (eventType='PNC Child Registration' or eventType='Child Registration') AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+    indicatorQuery: "SELECT count (*) FROM event WHERE (eventType='PNC Child Registration' or eventType='Child Registration') AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-anc"
     description: "Idadi ya wateja wajawazito wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-pnc"
     description: "Idadi ya wateja walio jifungua wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_pregnancy_outcome ON ec_pregnancy_outcome.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND strftime('%Y', 'now') AND strftime('%m', 'now')"
+    indicatorQuery: "SELECT count (*) FROM event INNER JOIN ec_pregnancy_outcome ON ec_pregnancy_outcome.base_entity_id = event.baseEntityId WHERE eventType='Referral Registration' AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-child-under-5"
     description: "Idadi ya wateja watoto walio chini ya miaka mitano(5) wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
