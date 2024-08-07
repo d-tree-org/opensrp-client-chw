@@ -97,7 +97,8 @@
             "field_value": "Child Home Visit",
             "creates_case": [
               "ec_child",
-              "ec_child_activity"
+              "ec_child_activity",
+              "ec_ecd_activities"
             ]
           },
           {
