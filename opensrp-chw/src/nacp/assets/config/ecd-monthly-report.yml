@@ -27,32 +27,53 @@ indicators:
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-anc"
     description: "Idadi ya wateja wajawazito wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM event 
-      INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId 
+    indicatorQuery: "SELECT COUNT (*) FROM event 
+      INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId
+      INNER JOIN task on task.for = ec_anc_register.base_entity_id
       WHERE eventType='Referral Registration' AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-pnc"
     description: "Idadi ya wateja walio jifungua wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
     indicatorQuery: "SELECT count (*) FROM event 
       INNER JOIN ec_pregnancy_outcome ON ec_pregnancy_outcome.base_entity_id = event.baseEntityId 
+      INNER JOIN task ON task.for = ec_pregnancy_outcome.base_entity_id
       WHERE eventType='Referral Registration'
       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-3-number-of-client-with-danger-sign-and-referral-issued-child-under-5"
     description: "Idadi ya wateja watoto walio chini ya miaka mitano(5) wenye dalili za hatari waliopewa rufaa  kwa mwezi huu"
-    indicatorQuery: "SELECT count (*) FROM  ec_family_member inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+    indicatorQuery: "SELECT COUNT(*) FROM event 
+      INNER JOIN ec_child ON ec_child.base_entity_id = event.baseEntityId 
+      INNER JOIN task ON task.for = ec_child.base_entity_id
+      WHERE eventType='Referral Registration'
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-4-number-of-completed-referrals-anc"
     description: "Idadi ya rufaa zilizokamilika kituoni kwa wajawazito"
-    indicatorQuery: "SELECT count (*) FROM  ec_family_member INNER JOIN ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+    indicatorQuery: "SELECT COUNT (*) FROM event 
+      INNER JOIN ec_anc_register ON ec_anc_register.base_entity_id = event.baseEntityId
+      INNER JOIN task on task.for = ec_anc_register.base_entity_id
+      WHERE eventType='Referral Registration' 
+      AND task.business_status = 'Complete'
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-4-number-of-completed-referrals-pnc"
     description: "Idadi ya rufaa zilizokamilika kituoni kwa walio jifungua"
-    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+    indicatorQuery: "SELECT count (*) FROM event 
+      INNER JOIN ec_pregnancy_outcome ON ec_pregnancy_outcome.base_entity_id = event.baseEntityId 
+      INNER JOIN task ON task.for = ec_pregnancy_outcome.base_entity_id
+      WHERE eventType='Referral Registration' 
+      AND AND task.business_status = 'Complete'
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-4-number-of-completed-referrals-child-under-5"
     description: "Idadi ya rufaa zilizokamilika kituoni kwa watoto wenye Umri chini ya Miaka Mitano"
-    indicatorQuery: "SELECT count (*) FROM  ec_family_member   inner join ec_family  on ec_family.base_entity_id = ec_family_member.relational_id WHERE ec_family_member.is_closed == '0' AND entity_type = 'ec_family_member' AND gender = 'Female' AND dod IS NULL AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int)  >= 10 AND cast(strftime('%Y', 'now') - strftime('%Y', dob) as int) <= 49;"
+    indicatorQuery: "SELECT COUNT(*) FROM event 
+      INNER JOIN ec_child ON ec_child.base_entity_id = event.baseEntityId 
+      INNER JOIN task ON task.for = ec_child.base_entity_id
+      WHERE eventType='Referral Registration' 
+      AND task.business_status = 'Complete' 
+      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) = date(substr(eventDate, 1, 4) || '-' || substr(eventDate, 6, 2) || '-' || '01')"
 
   - key: "ecd-5-number-of-caregiver-received-ecd-ME-years-10-24"
     description: "Idadi ya wazazi/walezi wa Kiume wenye miaka 10 hadi 24  waliopata huduma za MMMAM mwezi huu."
