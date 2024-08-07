@@ -25,12 +25,10 @@ public class ECDReportObject extends ReportObject {
             "ecd-5-number-of-caregiver-received-ecd-ME-years-over-24",
             "ecd-5-number-of-caregiver-received-ecd-kE-years-10-24",
             "ecd-5-number-of-caregiver-received-ecd-KE-years-over-24",
-            "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-10-25-years",
-            "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-over-25-years",
+            "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-age-10-25-years",
+            "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-age-over-25-years",
             "ecd-7-number-of-caregiver-created-play-material-with-age-10-25-years",
-            "ecd-7-number-of-caregiver-created-play-material-with-over-25-years",
-            "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-age-10-25-years",
-            "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-over-25-years"
+            "ecd-7-number-of-caregiver-created-play-material-with-over-25-years"
     );
 
     private static final List<String> COMPUTED_INDICATORS_VALUE_KEYS = Arrays.asList(
@@ -40,9 +38,8 @@ public class ECDReportObject extends ReportObject {
             "ecd-5-number-of-caregiver-received-ecd-ME-total",
             "ecd-5-number-of-caregiver-received-ecd-KE-total",
             "ecd-5-number-of-caregiver-received-ecd-total_ME_KE",
-            "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-total",
-            "ecd-7-number-of-caregiver-created-play-material-total",
-            "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-total"
+            "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-total",
+            "ecd-7-number-of-caregiver-created-play-material-total"
     );
 
     private final Date reportDate;
@@ -101,20 +98,15 @@ public class ECDReportObject extends ReportObject {
                             "ecd-5-number-of-caregiver-received-ecd-ME-total",
                             "ecd-5-number-of-caregiver-received-ecd-KE-total");
                     break;
-                case "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-total":
+                case "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-total":
                     total = getTotal(indicatorDataObject,
-                            "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-10-25-years",
-                            "ecd-6-number-of-children-received-ecd-0-3-years-with-caregiver-age-over-25-years");
+                            "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-age-10-25-years",
+                            "ecd-6-number-of-children-received-ecd-0-5-years-with-caregiver-age-over-25-years");
                     break;
                 case "ecd-7-number-of-caregiver-created-play-material-total":
                     total = getTotal(indicatorDataObject,
                             "ecd-7-number-of-caregiver-created-play-material-with-age-10-25-years",
                             "ecd-7-number-of-caregiver-created-play-material-with-over-25-years");
-                    break;
-                case "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-total":
-                    total = getTotal(indicatorDataObject,
-                            "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-age-10-25-years",
-                            "ecd-8-number-of-caregiver-created-or-bought-age-appropriate-books-for-child-with-over-25-years");
                     break;
             }
             indicatorDataObject.put(key, total);
