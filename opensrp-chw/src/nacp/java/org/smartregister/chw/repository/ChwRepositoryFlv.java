@@ -446,5 +446,11 @@ public class ChwRepositoryFlv {
         for (String configFile : Collections.singletonList(ecdClientReportIndicatorConfigFile)) {
             reportingLibrary.readConfigFile(configFile, db);
         }
+
+        try {
+            DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Collections.singletonList("ec_ecd_activities")), ChwApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion26");
+        }
     }
 }
