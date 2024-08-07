@@ -11,9 +11,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.R;
 import org.smartregister.chw.anc.actionhelper.HomeVisitActionHelper;
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
+import org.smartregister.chw.util.Constants;
 import org.smartregister.chw.util.Utils;
+import org.smartregister.chw.util.UtilsFlv;
 import org.smartregister.domain.Alert;
 import org.smartregister.util.JsonFormUtils;
 
@@ -24,12 +27,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import timber.log.Timber;
 
 public class DewormingAction extends HomeVisitActionHelper {
-    private Context context;
-    private String serviceIteration;
+    private final Context context;
+    private final String serviceIteration;
+    private MemberObject memberObject;
     private String str_date;
     private Date parsedDate;
     private Alert alert;
@@ -40,10 +45,11 @@ public class DewormingAction extends HomeVisitActionHelper {
         this.alert = alert;
     }
 
-    @Override
-    public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
-        // prevent default behavoiur
+    public DewormingAction(Context context, String serviceIteration, Alert alert, MemberObject member) {
+        this(context,serviceIteration,alert);
+        this.memberObject=member;
     }
+
 
     @Override
     public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
@@ -71,6 +77,22 @@ public class DewormingAction extends HomeVisitActionHelper {
 
         return jsonObject;
     }
+
+    @Override
+    public String getPreProcessed() {
+        try{
+            String formName= Constants.JSON_FORM.CHILD_HOME_VISIT.getDEWORMING();
+            JSONObject form= org.smartregister.chw.util.JsonFormUtils.getJson(context, formName, memberObject.getBaseEntityId());
+
+            String minDate= UtilsFlv.changeDateFormat(memberObject.getDob(),"yyyy-MM-dd'T'HH:mm:ss","dd-MM-yyyy");
+            Objects.requireNonNull(JsonFormUtils.getFieldJSONObject(JsonFormUtils.fields(form), "deworming{0}_date"))
+                    .put(JsonFormConstants.MIN_DATE, minDate);
+            return form.toString().replace("{0}",serviceIteration);
+        }
+        catch (Exception e){Timber.e(e);}
+        return "";
+    }
+
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
