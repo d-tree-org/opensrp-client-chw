@@ -5651,14 +5651,14 @@
       "name": "ec_ecd_activities",
       "columns": [
         {
-          "column_name": "entity_id",
+          "column_name": "base_entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
           }
         },
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
