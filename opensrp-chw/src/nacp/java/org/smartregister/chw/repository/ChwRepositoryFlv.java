@@ -112,6 +112,9 @@ public class ChwRepositoryFlv {
                 case 26:
                     upgradeToVersion26(db);
                     break;
+                case 27:
+                    upgradeToVersion27(db);
+                    break;
                 default:
                     break;
             }
@@ -433,6 +436,21 @@ public class ChwRepositoryFlv {
             DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Arrays.asList("ec_iccm_enrollment", "ec_iccm_service", "ec_cdp_outlet_stock_count")), ChwApplication.createCommonFtsObject());
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion26");
+        }
+    }
+
+    private static void upgradeToVersion27(SQLiteDatabase db) {
+        // setup ecd reporting
+        ReportingLibrary reportingLibrary = ReportingLibrary.getInstance();
+        String ecdClientReportIndicatorConfigFile = "config/ecd-monthly-report.yml";
+        for (String configFile : Collections.singletonList(ecdClientReportIndicatorConfigFile)) {
+            reportingLibrary.readConfigFile(configFile, db);
+        }
+
+        try {
+            DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Collections.singletonList("ec_ecd_activities")), ChwApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion27");
         }
     }
 }
