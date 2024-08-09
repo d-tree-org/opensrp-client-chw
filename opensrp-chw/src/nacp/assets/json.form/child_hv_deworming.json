@@ -102,7 +102,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_no_medicine_deworming{0}",
         "type": "check_box",
-        "hint": "Fill in the reason why Deworming was not done",
+        "label": "Fill in the reason why Deworming was not done",
         "v_required": {
           "value": "true",
           "err": "Please fill in the reason why deworming was not done"
