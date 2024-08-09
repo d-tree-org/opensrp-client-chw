@@ -91,9 +91,10 @@
         HUDUMA ZA MALEZI,MAKUZI NA
         MAENDELEO YA AWALI YA MTOTO (MMMAM)</h3>
     <h3>TAARIFA YA [MWEZI/MWAKA]: <span id="report_period"></span></h3>
-    <h3>MKOA: <span id="region_name"></span></h3>
-    <h3>HALIMASHAURI: <span id="council_name"></span></h3>
-    <h3>KITUO: <span id="reporting_facility"></span></h3>
+<!--    <h3>MKOA: <span id="region_name"></span></h3>-->
+<!--    <h3>HALIMASHAURI: <span id="council_name"></span></h3>-->
+<!--    <h3>KITUO: <span id="reporting_facility"></span></h3>-->
+        <h3>KIJIJI: <span id="village_name"></span></h3>
 </div>
 <table border="1">
     <thead></thead>
@@ -216,8 +217,10 @@
 <!--        facilityNameElement.innerHTML = Android.getReportingFacility();-->
         const dateElement = document.getElementById("report_period");
         const facilityElement = document.getElementById("reporting_facility");
+        const villageElement = document.getElementById("village_name");
         dateElement.innerHTML = Android.getDataPeriod();
-        facilityElement.innerHTML = Android.getReportingFacility();
+<!--        facilityElement.innerHTML = Android.getReportingFacility();-->
+        villageElement.innerHTML = Android.getCHWVillageName();
         const data = JSON.parse(Android.getData("ecd-clients-monthly-report"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {

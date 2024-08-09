@@ -91,4 +91,9 @@ public class ChwWebAppInterface {
     public String getReportingFacility() {
         return getAllSharedPreferences().fetchCurrentLocality();
     }
+
+    @JavascriptInterface
+    public String getCHWVillageName() {
+        return getAllSharedPreferences().getPreference("dfltLocName");
+    }
 }
