@@ -92,31 +92,6 @@ public class ImmunizationActionHelper implements BaseAncHomeVisitAction.AncHomeV
     }
 
     public void onPayloadReceived(String jsonPayload) {
-        /** todo nitusima to assit on this since he is the one who improved the function using lambda function
-        notDoneVaccines.clear();
-        completedVaccines.clear();
-
-        JSONArray jsonArray = UtilsFlv.jsonGet(jsonPayload,"step1.fields",new JSONArray());
-
-        Set<String> vaccinesKeys=new FnList<>(wrappers)
-                .map(VaccineWrapper::getName)
-                .map(NCUtils::removeSpaces)
-                .toSet();
-
-        //TODO make the check used in the filter method below more effective and intuitive to serve as a general check for if the field is vaccine or not
-        FnList.range( jsonArray.length() )
-                .map( jsonArray::getJSONObject )
-                .map( UtilsFlv::getFieldKeyValuePair )
-                .filter( field -> vaccinesKeys.contains(field.key))
-                .forEachItem( field -> {
-                    if( UtilsFlv.isValidDOBDateFormat( field.value )){
-                        List<String> vacs = UtilsFlv.coalesce(completedVaccines.get(field.value),new ArrayList<>());
-                        vacs.add(field.key);
-                        completedVaccines.put(field.value, vacs);
-                    }
-                    else {notDoneVaccines.add(field.key);}
-                });**/
-
         try {
             notDoneVaccines.clear();
             completedVaccines.clear();
@@ -201,11 +176,16 @@ public class ImmunizationActionHelper implements BaseAncHomeVisitAction.AncHomeV
                 completedBuilder.append(getTranslatedValue(vac.toUpperCase()));
             }
 
+            if(!entry.getKey().matches("\\d{4}-\\d{2}-\\d{2}")){
+                continue;
+            }
+
             if (completedBuilder.length() > 0) {
                 try {
                     if (builder.length() > 0) {
                         builder.append(" · ");
                     }
+
 
                     builder.append(MessageFormat.format("{0} {1} {2}",
                             completedBuilder.toString(),
